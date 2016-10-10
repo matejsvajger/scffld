@@ -39,9 +39,9 @@ export default function(gulp, args, plugins, config, target) {
 
     if (args.debug) {
 	    //- Print seed data to terminal
-      let msg  = plugins.util.colors.yellow('\n==== DEBUG: site.data being injected to templates ====\n');
+      let msg  = plugins.util.colors.yellow('\n==== DEBUG: site.data injected to templates ====\n');
 					msg += JSON.stringify(data, null, 2);
-		      msg += plugins.util.colors.yellow('\n==== DEBUG: package.json config being injected to templates ====\n');
+		      msg += plugins.util.colors.yellow('\n==== DEBUG: package.json config injected to templates ====\n');
 					msg += JSON.stringify(config, null, 2);
 			plugins.util.log(msg);
     }
