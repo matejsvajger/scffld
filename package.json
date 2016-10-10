@@ -1,0 +1,60 @@
+{
+  "name": "frontend-project-template",
+  "version": "1.0.0",
+  "description": "Frontend website - project template - Using LESS/PUG/ES2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html",
+    "project",
+    "template",
+    "pug",
+    "less",
+    "babel",
+    "gulp"
+  ],
+  "author": "Matej Svajger",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.5.0",
+    "babel-core": "^6.17.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-debug": "^2.1.2",
+    "gulp-if": "^2.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-pug": "^3.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "minimist": "^1.2.0"
+  },
+  "config": {
+    "directories": {
+      "source": "src",
+      "build": "build",
+      "temporary": "dev",
+      "//": "Directories relative to `source` directory",
+      "modules": "_modules",
+      "layouts": "_layouts",
+      "images": "_images",
+      "styles": "_styles",
+      "scripts": "_scripts",
+      "data": "_data"
+    },
+    "//": "Entry files",
+    "entries": {
+      "js": "main**.js",
+      "css": "main**.less"
+    }
+  }
+}
