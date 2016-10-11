@@ -6,7 +6,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import foldero from 'foldero';
 
-export default function(gulp, args, plugins, config, target) {
+export default function(gulp, args, plugins, config, target, bs) {
   let dest = path.join(target);
   let dirs = config.directories;
   let seedPath = path.join(dirs.source, dirs.data);
@@ -29,7 +29,7 @@ export default function(gulp, args, plugins, config, target) {
           }
           catch(e) {
             let msg  = plugins.util.colors.red(`Error Parsing DATA file: ${file}\n`);
-		            msg += plugins.util.colors.bold('==== Details Below ====') + `\n${e}`;
+                msg += plugins.util.colors.bold('==== Details Below ====') + `\n${e}`;
             plugins.util.log(msg);
           }
           return json;
@@ -38,12 +38,12 @@ export default function(gulp, args, plugins, config, target) {
     }
 
     if (args.debug) {
-	    //- Print seed data to terminal
+      //- Print seed data to terminal
       let msg  = plugins.util.colors.yellow('\n==== DEBUG: site.data injected to templates ====\n');
-					msg += JSON.stringify(data, null, 2);
-		      msg += plugins.util.colors.yellow('\n==== DEBUG: package.json config injected to templates ====\n');
-					msg += JSON.stringify(config, null, 2);
-			plugins.util.log(msg);
+          msg += JSON.stringify(data, null, 2);
+          msg += plugins.util.colors.yellow('\n==== DEBUG: package.json config injected to templates ====\n');
+          msg += JSON.stringify(config, null, 2);
+      plugins.util.log(msg);
     }
 
     return gulp.src([
@@ -68,8 +68,8 @@ export default function(gulp, args, plugins, config, target) {
       removeEmptyAttributes: true,
       removeRedundantAttributes: true
     }))
-    .pipe(gulp.dest(dest));
-
+    .pipe(gulp.dest(dest))
+    .on('end', bs.reload);
   });
 
 }

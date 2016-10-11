@@ -3,7 +3,7 @@
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 
-export default function(gulp, args, plugins, config, target) {
+export default function(gulp, args, plugins, config, target, bs) {
   let dirs = config.directories;
   let entries = config.entries;
   let dest = path.join(target, dirs.styles.replace(/^_/, ''));
@@ -23,6 +23,7 @@ export default function(gulp, args, plugins, config, target) {
       .pipe(plugins.postcss([autoprefixer(autoprefixConf)]))
       .pipe(plugins.if(!args.dev, plugins.cleanCss()))
       .pipe(plugins.sourcemaps.write('./'))
-      .pipe(gulp.dest(dest));
+      .pipe(gulp.dest(dest))
+      .pipe(bs.stream({match: '**/*.css'}));
   });
 }
