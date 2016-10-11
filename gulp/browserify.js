@@ -10,7 +10,7 @@ import envify from 'envify';
 import babel from 'babelify';
 
 
-export default function(gulp, args, plugins, config, target) {
+export default function(gulp, args, plugins, config, target, bs) {
   let dirs = config.directories;
   let entries = config.entries;
 
@@ -66,6 +66,7 @@ export default function(gulp, args, plugins, config, target) {
               plugins.util.colors.cyan(entry)
               + ' was browserified: '
               + plugins.util.colors.magenta(time + 's'));
+            return bs.reload('*.js');
           });
       };
 
