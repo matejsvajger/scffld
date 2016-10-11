@@ -33,7 +33,8 @@ gulp.task('default', ['clean'], () => {
 // Build production-ready code
 gulp.task('build', [
   'less',
-  'pug'
+  'pug',
+  'browserify'
 ]);
 
 // serve, watch, share
