@@ -1,5 +1,7 @@
 'use strict';
 
+import ngrok from 'ngrok';
+
 export default function(gulp, args, plugins, config, target, bs) {
   // BrowserSync
   gulp.task('browserSync', () => {
@@ -19,5 +21,11 @@ export default function(gulp, args, plugins, config, target, bs) {
         })()
       }
     });
+    if (args.share) {
+      ngrok.connect((config.port || 3000), (err, url) => {
+        let msg = plugins.util.colors.magenta(url);
+        plugins.util.log(`Tunnel: ${msg}`);
+      });
+    }
   });
 }
