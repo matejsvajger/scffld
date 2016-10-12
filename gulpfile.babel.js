@@ -10,21 +10,23 @@ import bs from 'browser-sync';
 //- Import all gulp-* based plugins
 import gulpLoadPlugins from 'gulp-load-plugins';
 const plugins = gulpLoadPlugins();
+const browserSync = bs.create();
 
 //- Load config into variable
-let args = minimist(process.argv.slice(2));
 let config = Object.assign({}, pjson.config);
-let target = args.dev ? config.directories.temporary : config.directories.build;
-let browserSync = bs.create();
+let argv = process.argv.slice(2);
+let args = minimist(argv);
+    args.serve = (argv.shift() === 'serve');
 
 //- Load all gulp tasks
 let tasks = fs.readdirSync('./gulp');
 for (let file of tasks) {
   if ((/\.(js)$/i).test(file)) {
+    let task = file.split('.').shift();
     plugins.util.log(
-      'Requiring ' + plugins.util.colors.magenta(file.split('.').shift().toUpperCase()) + ' task module.'
+      'Requiring task module ' + plugins.util.colors.magenta(task)
     );
-    require(`./gulp/${file}`)(gulp, args, plugins, config, target, browserSync);
+    require(`./gulp/${file}`)(gulp, args, plugins, config, browserSync);
   }
 }
 
@@ -36,9 +38,9 @@ gulp.task('default', ['clean'], () => {
 gulp.task('build', [
   'pug',
   'less',
-  'browserify',
-  'browserSync',
-  'watch'
+  'browserify'
 ]);
 
-// serve, watch, share
+gulp.task('serve', ['build', 'browserSync', 'watch']);
+
+//@TODO: imagemin, lint, sass, react, vue, webpack, tests, splash screen, help system

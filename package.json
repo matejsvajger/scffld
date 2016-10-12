@@ -57,8 +57,7 @@
   "config": {
     "directories": {
       "source": "src",
-      "build": "build",
-      "temporary": "dev",
+      "build": "dist",
       "//": "Directories relative to `source` directory",
       "modules": "_modules",
       "layouts": "_layouts",
