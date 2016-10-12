@@ -20,6 +20,7 @@
   "devDependencies": {
     "autoprefixer": "^6.5.0",
     "babel-core": "^6.17.0",
+    "babel-eslint": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.16.0",
     "babel-register": "^6.16.3",
@@ -35,6 +36,7 @@
     "gulp-changed": "^1.3.2",
     "gulp-clean-css": "^2.0.13",
     "gulp-debug": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.1",
     "gulp-less": "^3.1.0",
@@ -62,8 +64,14 @@
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
-      "styles":  {"src": "_styles", "dist":"css"},
-      "scripts": {"src": "_scripts", "dist":"js"},
+      "styles": {
+        "src": "_styles",
+        "dist": "css"
+      },
+      "scripts": {
+        "src": "_scripts",
+        "dist": "js"
+      },
       "data": "_seeds"
     },
     "//": "Entry files",
