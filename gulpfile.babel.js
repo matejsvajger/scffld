@@ -2,7 +2,6 @@
 
 import fs from 'fs';
 import gulp from 'gulp';
-import debug from 'gulp-debug';
 import pjson from './package.json';
 import minimist from 'minimist';
 import bs from 'browser-sync';
@@ -30,20 +29,18 @@ for (let file of tasks) {
   }
 }
 
+// Default task cleans build dir and rebuilds.
+gulp.task('default', ['clean'], () => {
+  gulp.start('build');
+});
+
 // Build production-ready code
-gulp.task('build', [
-  'copy',
-  'pug',
-  'less',
-  'browserify'
-]);
+gulp.task('build', ['copy', 'pug', 'less', 'browserify']);
 
 // Build uncompressed code served via dev server
 gulp.task('serve', ['build', 'browserSync', 'watch']);
 
-// Default task cleans build dir and rebuilds.
-gulp.task('default', ['clean'], () => {
-   gulp.start('build');
-});
+// Testing
+gulp.task('test', ['lint']);
 
 //@TODO: imagemin, lint, sass, react, vue, webpack, tests, splash screen, help system
