@@ -62,8 +62,8 @@
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
-      "styles": "_styles",
-      "scripts": "_scripts",
+      "styles":  {"src": "_styles", "dist":"css"},
+      "scripts": {"src": "_scripts", "dist":"js"},
       "data": "_seeds"
     },
     "//": "Entry files",

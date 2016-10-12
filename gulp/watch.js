@@ -10,7 +10,7 @@ export default function(gulp, args, $, config, bs) {
     if (args.serve) {
       // Less files
       gulp.watch([
-        path.join(dirs.source, dirs.styles, '**/*.less'),
+        path.join(dirs.source, (typeof(dirs.styles) == 'string' ? dirs.styles : dirs.styles.src), '**/*.less'),
         path.join(dirs.source, dirs.modules, '**/*.less'),
       ], ['less']);
 

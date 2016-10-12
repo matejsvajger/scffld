@@ -20,7 +20,7 @@ head
   meta(name='description', content= 'A new Yeogurt application')
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   block stylesheets
-    link(rel='stylesheet', href= baseUrl + 'styles/main.css')
+    link(rel='stylesheet', href= baseUrl + config.directories.styles.dist + '/main.css')
 
 body
   <!--[if lt IE 9]>
@@ -30,6 +30,6 @@ body
   block content
 
   block scripts
-    script(src= baseUrl + 'scripts/main.js')
+    script(src= baseUrl + config.directories.scripts.dist + '/main.js')
 
 </html>

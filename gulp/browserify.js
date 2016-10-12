@@ -13,6 +13,7 @@ import babel from 'babelify';
 export default function(gulp, args, $, config, bs) {
   let dirs = config.directories;
   let entries = config.entries;
+  let src = typeof(dirs.scripts) == 'string' ? dirs.scripts : dirs.scripts.src;
 
   let browserifyTask = (files) => {
     return files.map((entry) => {
@@ -55,7 +56,9 @@ export default function(gulp, args, $, config, bs) {
           .pipe($.rename(function(filepath) {
             // Remove 'source' directory as well as prefixed folder underscores
             // Ex: 'src/_scripts' --> '/scripts'
-            filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '');
+            filepath.dirname = typeof(dirs.scripts) == 'string' ?
+              filepath.dirname.replace(dirs.source, '').replace('_', ''):
+              filepath.dirname.replace(dirs.source, '').replace(dirs.scripts.src, dirs.scripts.dist);
           }))
           .pipe($.sourcemaps.write('./'))
           .pipe(gulp.dest(dest))
@@ -80,7 +83,7 @@ export default function(gulp, args, $, config, bs) {
 
   // Browserify Task
   gulp.task('browserify', (done) => {
-    return glob('./' + path.join(dirs.source, dirs.scripts, entries.js), (err, files) => {
+    return glob('./' + path.join(dirs.source, src, entries.js), (err, files) => {
       if (err) {
         done(err);
       }

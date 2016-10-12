@@ -8,5 +8,5 @@ import $ from 'jquery';
 window.$ = $;
 
 $(() => {
-  console.log('Hello world!');
+  console.log('Hello worldz!');
 });
