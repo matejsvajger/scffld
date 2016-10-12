@@ -30,17 +30,20 @@ for (let file of tasks) {
   }
 }
 
-gulp.task('default', ['clean'], () => {
-   gulp.start('build');
-});
-
 // Build production-ready code
 gulp.task('build', [
+  'copy',
   'pug',
   'less',
   'browserify'
 ]);
 
+// Build uncompressed code served via dev server
 gulp.task('serve', ['build', 'browserSync', 'watch']);
+
+// Default task cleans build dir and rebuilds.
+gulp.task('default', ['clean'], () => {
+   gulp.start('build');
+});
 
 //@TODO: imagemin, lint, sass, react, vue, webpack, tests, splash screen, help system
