@@ -2,7 +2,9 @@
 
 import ngrok from 'ngrok';
 
-export default function(gulp, args, plugins, config, target, bs) {
+export default function(gulp, args, $, config, bs) {
+  let dirs = config.directories;
+
   // BrowserSync
   gulp.task('browserSync', () => {
     bs.init({
@@ -10,12 +12,12 @@ export default function(gulp, args, plugins, config, target, bs) {
       startPath: config.baseUrl,
       port: config.port || 3000,
       server: {
-        baseDir: target,
+        baseDir: dirs.build,
         routes: (() => {
           let routes = {};
 
           // Map base URL to routes
-          routes[config.baseUrl] = target;
+          routes[config.baseUrl] = dirs.build;
 
           return routes;
         })()
@@ -23,8 +25,14 @@ export default function(gulp, args, plugins, config, target, bs) {
     });
     if (args.share) {
       ngrok.connect((config.port || 3000), (err, url) => {
-        let msg = plugins.util.colors.magenta(url);
-        plugins.util.log(`Tunnel: ${msg}`);
+        let traffic = 'http://localhost:4040/';
+        let msg  = '[' + $.util.colors.blue('ngrok') + '] ';
+            msg += $.util.colors.bold('Tunnel URL:') + '\n';
+            msg += ' ----------------------------------\n';
+            msg += '  Secure: ' + $.util.colors.magenta(url) + '\n';
+            msg += ' Traffic: ' + $.util.colors.magenta(traffic) + '\n';
+            msg += ' ----------------------------------';
+        console.log(msg);
       });
     }
   });

@@ -6,9 +6,9 @@ import path from 'path';
 import yaml from 'js-yaml';
 import foldero from 'foldero';
 
-export default function(gulp, args, plugins, config, target, bs) {
-  let dest = path.join(target);
+export default function(gulp, args, $, config, bs) {
   let dirs = config.directories;
+  let dest = path.join(dirs.build);
   let seedPath = path.join(dirs.source, dirs.data);
 
   // Compiling Pug templates.
@@ -28,9 +28,9 @@ export default function(gulp, args, plugins, config, target, bs) {
               JSON.parse(fs.readFileSync(file, 'utf8'));
           }
           catch(e) {
-            let msg  = plugins.util.colors.red(`Error Parsing DATA file: ${file}\n`);
-                msg += plugins.util.colors.bold('==== Details Below ====') + `\n${e}`;
-            plugins.util.log(msg);
+            let msg  = $.util.colors.red(`Error Parsing DATA file: ${file}\n`);
+                msg += $.util.colors.bold('==== Details Below ====') + `\n${e}`;
+            $.util.log(msg);
           }
           return json;
         }
@@ -39,19 +39,19 @@ export default function(gulp, args, plugins, config, target, bs) {
 
     if (args.debug) {
       //- Print seed data to terminal
-      let msg  = plugins.util.colors.yellow('\n==== DEBUG: site.data injected to templates ====\n');
+      let msg  = $.util.colors.yellow('\n==== DEBUG: site.data injected to templates ====\n');
           msg += JSON.stringify(data, null, 2);
-          msg += plugins.util.colors.yellow('\n==== DEBUG: package.json config injected to templates ====\n');
+          msg += $.util.colors.yellow('\n==== DEBUG: package.json config injected to templates ====\n');
           msg += JSON.stringify(config, null, 2);
-      plugins.util.log(msg);
+      $.util.log(msg);
     }
 
     return gulp.src([
       path.join(dirs.source, '**/*.pug'),
       '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}')
     ])
-    .pipe(plugins.changed(dest))
-    .pipe(plugins.pug({
+    .pipe($.changed(dest))
+    .pipe($.pug({
       pretty: true,
       locals: {
         config: config,
@@ -61,7 +61,7 @@ export default function(gulp, args, plugins, config, target, bs) {
         }
       }
     }))
-    .pipe(plugins.htmlmin({
+    .pipe($.htmlmin({
       collapseBooleanAttributes: true,
       conservativeCollapse: true,
       removeCommentsFromCDATA: true,
