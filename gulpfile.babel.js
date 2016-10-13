@@ -42,5 +42,3 @@ gulp.task('serve', ['build', 'browserSync', 'watch']);
 
 // Testing
 gulp.task('test', ['lint']);
-
-//@TODO: readme, sass, react, vue, webpack, tests, splash screen, help system

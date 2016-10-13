@@ -59,10 +59,14 @@
     "watchify": "^3.7.0"
   },
   "config": {
+    "//": "Local Server Settings",
+    "port": "3000",
+    "baseUrl": "./",
+    "//": "Gulp Task Directories",
     "directories": {
       "source": "src",
       "build": "dist",
-      "//": "Directories relative to `source` directory",
+      "//": "Directories relative to source directory",
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
