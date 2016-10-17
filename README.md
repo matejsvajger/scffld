@@ -112,8 +112,8 @@ Folders relative to the `source` configured directory
 
 | Setting | Description |
 |---------|-------
-| [seeds](#seed-files) | Data folder where JSON/YAML files are loaded into templates
 | scripts  | Scripts folder where all `.js` files are located (main.js must be in root of this folder)
+| [seeds](#seed-files) | Data folder where JSON/YAML files are loaded into templates
 | styles   | Styles folder where all stylesheet files are located (main stylesheet must be in root of this folder)
 | modules  | Modules folder where all reusable code should live
 | layouts  | Layouts folder where all layout templates should live
@@ -256,9 +256,16 @@ review the [guidelines for contributing](CONTRIBUTING.md) and [code of conduct](
 - Write tests
 - Make a terminal help command
 - Implement webpack as an alternative option
+- Add React + JSX as an alternative to Pug
+- Bump ES6 to ES2016+ and rewrite gulp tasks to run them over npm scripts
 
 ### Why ?
 Because I couldn't find a tailormade generator and I needed something that suits my current workflow and helps me jump start a project. This template is heavily inspired by yeoman webapp and yeougurt generators.
+
+### Credits
+The demo image is from amazing [Unsplash](https://unsplash.com/).
+Thanks to [DLMousey](https://github.com/DLMousey) for helping out with the hardest part - naming.
+
 
 ## License
 
