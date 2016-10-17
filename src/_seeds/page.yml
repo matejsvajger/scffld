@@ -1,5 +1,6 @@
-title: Hello World!
-main:
+title: Scffld
+welcome: Welcome to
+menu:
   - name: Getting started
     link: '#'
   - name: Documentation
