@@ -3,10 +3,11 @@
 
 'use strict';
 
-import $ from 'jquery';
+import Welcome from '../_modules/welcome/welcome';
+import {log} from './utils';
 
-window.$ = $;
+let welcome = new Welcome();
+    welcome.init();
 
-$(() => {
-  console.log('Hello worldz!');
-});
+// Console MSG
+log("Welcome to Scffld!");

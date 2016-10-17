@@ -1,8 +1,22 @@
-@color: green;
+// 'normalize.css';
+@import (inline) 'node_modules/normalize.css/normalize.css';
+@import url(https://fonts.googleapis.com/css?family=Cutive+Mono);
+@import '../_modules/welcome/welcome';
+
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
 
 body {
-  h1 { color: @color; }
-  &:fullscreen {
-      background: black;
-  }
+  background: #fff;
+  color: #383a3c;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.25;
+  font-family: 'Cutive Mono', monospace;
+}
+
+a, button {
+  outline: none;
 }
