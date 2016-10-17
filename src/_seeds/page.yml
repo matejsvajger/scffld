@@ -1,0 +1,9 @@
+title: Scffld
+welcome: Welcome to
+menu:
+  - name: Getting started
+    link: '#'
+  - name: Documentation
+    link: '/category'
+  - name: About
+    link: '#'

@@ -1,8 +1,7 @@
 {
-  "name": "frontend-project-template",
+  "name": "scffld",
   "version": "1.0.0",
-  "description": "Frontend website - project template - Using LESS/PUG/ES2015",
-  "main": "index.js",
+  "description": "Front-end - web project template - Using LESS/PUG/ES2015",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,46 +14,86 @@
     "babel",
     "gulp"
   ],
-  "author": "Matej Svajger",
+  "author": "Matej Svajger <hello@matejsvajger.com>",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/matejsvajger/scffld",
+    "type": "git"
+  },
   "devDependencies": {
     "autoprefixer": "^6.5.0",
     "babel-core": "^6.17.0",
+    "babel-eslint": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.16.0",
     "babel-register": "^6.16.3",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.17.2",
+    "browserify": "^13.1.0",
     "del": "^2.2.2",
+    "envify": "^3.4.1",
+    "foldero": "^0.1.1",
+    "glob": "^7.1.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-changed": "^1.3.2",
     "gulp-clean-css": "^2.0.13",
     "gulp-debug": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.3",
     "gulp-less": "^3.1.0",
     "gulp-load-plugins": "^1.3.0",
     "gulp-notify": "^2.2.0",
     "gulp-postcss": "^6.2.0",
     "gulp-pug": "^3.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
-    "minimist": "^1.2.0"
+    "imagemin-pngquant": "^5.0.0",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-svgo": "^5.2.0",
+    "js-yaml": "^3.6.1",
+    "minimist": "^1.2.0",
+    "ngrok": "^2.2.3",
+    "pug": "^2.0.0-beta6",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   },
   "config": {
+    "//": "Local Server Settings",
+    "port": "3000",
+    "baseUrl": "./",
+    "//": "Gulp Task Directories",
     "directories": {
       "source": "src",
-      "build": "build",
-      "temporary": "dev",
-      "//": "Directories relative to `source` directory",
+      "build": "dist",
+      "//": "Directories relative to source directory",
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
-      "styles": "_styles",
-      "scripts": "_scripts",
-      "data": "_data"
+      "styles": {
+        "src": "_styles",
+        "dist": "css"
+      },
+      "scripts": {
+        "src": "_scripts",
+        "dist": "js"
+      },
+      "data": "_seeds"
     },
     "//": "Entry files",
     "entries": {
       "js": "main**.js",
       "css": "main**.less"
     }
+  },
+  "dependencies": {
+    "normalize.css": "^5.0.0"
   }
 }

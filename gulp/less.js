@@ -3,26 +3,29 @@
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 
-export default function(gulp, args, plugins, config, target) {
+export default function(gulp, args, $, config, bs) {
   let dirs = config.directories;
   let entries = config.entries;
-  let dest = path.join(target, dirs.styles.replace(/^_/, ''));
+  let src = typeof(dirs.styles) == 'string' ? dirs.styles.replace(/^_/, '') : dirs.styles.src;
+  let dest = typeof(dirs.styles) == 'string' ? dirs.styles.replace(/^_/, '') : dirs.styles.dist;
+      dest = path.join(dirs.build, dest);
 
   gulp.task('less', () => {
     let autoprefixConf = {
       browsers: ['last 2 version', '> 5%', 'safari 5', 'ios 6', 'android 4']
     };
 
-    return gulp.src( path.join(dirs.source, dirs.styles, entries.css) )
-      .pipe(plugins.debug({title:'LESS:'}))
-      .pipe(plugins.sourcemaps.init())
-      .pipe(plugins.less())
+    return gulp.src( path.join(dirs.source, src, entries.css) )
+      .pipe($.debug({title:'LESS:'}))
+      .pipe($.sourcemaps.init())
+      .pipe($.less())
         .on('error', (err) => {
-          plugins.util.log(err);
+          $.util.log(err);
         })
-      .pipe(plugins.postcss([autoprefixer(autoprefixConf)]))
-      .pipe(plugins.if(!args.dev, plugins.cleanCss()))
-      .pipe(plugins.sourcemaps.write('./'))
-      .pipe(gulp.dest(dest));
+      .pipe($.postcss([autoprefixer(autoprefixConf)]))
+      .pipe($.if((!args.serve && !args.dev), $.cleanCss()))
+      .pipe($.sourcemaps.write('./'))
+      .pipe(gulp.dest(dest))
+      .pipe(bs.stream({match: '**/*.css'}));
   });
 }

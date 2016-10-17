@@ -2,37 +2,43 @@
 
 import fs from 'fs';
 import gulp from 'gulp';
-import debug from 'gulp-debug';
 import pjson from './package.json';
 import minimist from 'minimist';
+import browserSync from 'browser-sync';
 
 //- Import all gulp-* based plugins
 import gulpLoadPlugins from 'gulp-load-plugins';
 const plugins = gulpLoadPlugins();
+const bs = browserSync.create();
 
 //- Load config into variable
-let args = minimist(process.argv.slice(2));
 let config = Object.assign({}, pjson.config);
-let target = args.dev ? config.directories.temporary : config.directories.build;
+let argv = process.argv.slice(2);
+let args = minimist(argv);
+    args.serve = (argv.shift() === 'serve');
 
 //- Load all gulp tasks
 let tasks = fs.readdirSync('./gulp');
 for (let file of tasks) {
   if ((/\.(js)$/i).test(file)) {
+    let task = file.split('.').shift();
     plugins.util.log(
-      'Requiring ' + plugins.util.colors.magenta(file.split('.').shift().toUpperCase()) + ' task module.'
+      'Requiring task module ' + plugins.util.colors.magenta(task)
     );
-    require(`./gulp/${file}`)(gulp, args, plugins, config, target);
+    require(`./gulp/${file}`)(gulp, args, plugins, config, bs);
   }
 }
 
+// Default task cleans build dir and rebuilds.
 gulp.task('default', ['clean'], () => {
-   gulp.start('build');
+  gulp.start('build');
 });
 
 // Build production-ready code
-gulp.task('build', [
-  'less'
-]);
+gulp.task('build', ['imagemin', 'copy', 'pug', 'less', 'browserify']);
 
-// serve, watch, share
+// Build uncompressed code served via dev server
+gulp.task('serve', ['build', 'browserSync', 'watch']);
+
+// Testing
+gulp.task('test', ['lint']);
