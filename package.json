@@ -1,8 +1,7 @@
 {
-  "name": "frontend-project-template",
+  "name": "scffld",
   "version": "1.0.0",
-  "description": "Frontend website - project template - Using LESS/PUG/ES2015",
-  "main": "index.js",
+  "description": "Front-end - web project template - Using LESS/PUG/ES2015",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,8 +14,12 @@
     "babel",
     "gulp"
   ],
-  "author": "Matej Svajger",
+  "author": "Matej Svajger <hello@matejsvajger.com>",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/matejsvajger/scffld",
+    "type": "git"
+  },
   "devDependencies": {
     "autoprefixer": "^6.5.0",
     "babel-core": "^6.17.0",
@@ -87,6 +90,6 @@
     }
   },
   "dependencies": {
-    "jquery": "^3.1.1"
+    "normalize.css": "^5.0.0"
   }
 }
