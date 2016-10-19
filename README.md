@@ -11,9 +11,9 @@
 * Bundling all of your JavaScript files into one with [Browserify](http://browserify.org/)
 * HTML templating with [Pug](https://pugjs.or) (former Jade)
 * Seeding of templates with data from JSON or YAML files
-* Write modular CSS with [lesscss](http://lesscss.org/)
+* Write modular CSS with [lesscss](http://lesscss.org/) or [sass](http://sass-lang.com/)
 * Automagically lint your scripts with [ESLint](http://eslint.org/)
-* Automagically compile LESS/ES6/PUG into CSS/JS/HTML
+* Automagically compile {LESS|SASS}/ES6/PUG into CSS/JS/HTML
 * Map compiled CSS and JS with sourcemaps
 * Configurable build dirs for each resource via config
 * Awesome image optimization
@@ -22,7 +22,7 @@
 
 - Download this project from github or run the following command in your terminal:
 ```
-curl -L https://github.com/matejsvajger/scffld/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,LICENSE.md,CONDUCT.md,CONTRIBUTING.md}
+curl -L https://github.com/matejsvajger/scffld/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,LICENSE.md,CONDUCT.md,CONTRIBUTING.md,CHANGELOG.md}
 ```
 - Install dependencies: `npm install`
 - Run `gulp serve` to preview and watch for changes
@@ -67,10 +67,12 @@ Scffld has a predefined folder structure, but you can customize the build destin
 |   |   └── module
 |   |       ├── module.js
 |   |       ├── module.less
+|   |       ├── module.sass
 |   |       └── module.pug
 |   ├── _seeds                # JSON/YAML files that add data to templates
 |   ├── _styles               # Global styles, mixins, variables, etc
-|   |   └── main.less         # Main stylesheet (import everything to this file)
+|   |   └── main.less         # Main stylesheet (import everything to this file if using less)
+|   |   └── main.sass         # Main stylesheet (import everything to this file if using sass)
 |   ├── _scripts              # Global scripts, base classes, etc
 |   |   └── main.js           # JavaScript entry file
 |   └── index.pug             # Homepage template
@@ -100,6 +102,7 @@ In the `package.json` file, within the root of the project, you have the ability
 |---------|-------
 | port    | Port of the development server (browserSync)
 | baseUrl | Root directory of your site
+| cssPreprocessor | values: `"less"` or `"sass"`; default: `"less"`
 
 ### Main Directories
 | Setting | Description |
@@ -128,7 +131,7 @@ Ex: `main**.js` will process all files that start with `main` and end with `.js`
 | Setting | Description |
 |---------|-------
 | js     | Tells browserify what file(s) to bundle and generate at your desired build target
-| css  | Tells your less preprocessor what file(s) to generate at your desired build target
+| css  | Tells your less/sass preprocessor what file(s) to generate at your desired build target
 
 ***Default configuration:***
 
@@ -136,6 +139,7 @@ Ex: `main**.js` will process all files that start with `main` and end with `.js`
 "//": "CUSTOM CONFIGURATION",
 "config": {
   "//": "Local Server Settings",
+  "cssPreprocessor": "less",
   "port": "3000",
   "baseUrl": "./",
   "//": "Gulp Task Directories",
@@ -153,7 +157,7 @@ Ex: `main**.js` will process all files that start with `main` and end with `.js`
   "//": "Entry files",
   "entries": {
     "js": "main**.js",
-    "css": "main**.less"
+    "css": "main**"
   }
 }
 ```
@@ -163,7 +167,7 @@ You can replace config keys `images`, `styles` and `scripts` with object ie: `"s
 ## Gulp Workflow
 
 ### `gulp build`
-Builds out an optimized site through compilation of preprocessors (Pug, Less, etc), minification of CSS and HTML, uglification of Javascript, and optimization of images.
+Builds out an optimized site through compilation of preprocessors (Pug, Less/Sass, etc), minification of CSS and HTML, uglification of Javascript, and optimization of images.
 
 **Extra Task Option(s)**
 
@@ -198,12 +202,12 @@ Compiles and minifies JavaScripts for production.
 |---------|-------
 |`gulp browserify --dev`| Compiles JavaScript files without minification.
 
-### `gulp less`
-Compiles and minifies CSS for production.
+### `gulp styles`
+Compiles and minifies CSS for production. If using `sass` preprocessor it will look for a `"main**.+(sass|scss)"` file in the styles source directory, otherwise it will load `"main**.less"` file.
 
 |Tasks| Description
 |---------|-------
-|`gulp less --dev`| Compiles LESS fiels without minification.
+|`gulp styles --dev`| Compiles LESS/SASS files without minification.
 
 ### `gulp pug`
 Compiles Pug templates into HTML.
@@ -211,7 +215,7 @@ Compiles Pug templates into HTML.
 
 ***Adding the `--debug` option to any gulp task displays extra debugging information (ex. data being loaded into your templates or css analysis using [Parker](https://github.com/katiefenn/parker))***
 
-### Data Files
+### Seed Files
 
 If you want to load global data into your pug templates, you can add JSON/YAML files in `src/_seeds` folder.
 
@@ -249,8 +253,6 @@ review the [guidelines for contributing](CONTRIBUTING.md) and [code of conduct](
 * [Pull requests](CONTRIBUTING.md#pull-requests)
 
 ## Roadmap
-- Replace npm with yarn package manager
-- Add support for SASS
 - Prepare examples
 - Add module generator
 - Write tests
@@ -266,6 +268,8 @@ Because I couldn't find a tailormade generator and I needed something that suits
 The demo image is from amazing [Unsplash](https://unsplash.com/).
 Thanks to [DLMousey](https://github.com/DLMousey) for helping out with the hardest part - naming.
 
+## Release History
+See [Changelog](CHANGELOG.md)
 
 ## License
 
