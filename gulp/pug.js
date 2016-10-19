@@ -51,6 +51,7 @@ export default function(gulp, args, $, config, bs) {
       '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}')
     ])
     .pipe($.changed(dest))
+    .pipe($.plumber())
     .pipe($.pug({
       pretty: true,
       locals: {

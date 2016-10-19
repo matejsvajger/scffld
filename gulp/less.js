@@ -16,6 +16,7 @@ export default function(gulp, args, $, config, bs) {
     };
 
     return gulp.src( path.join(dirs.source, src, entries.css) )
+      .pipe($.plumber())
       .pipe($.debug({title:'LESS:'}))
       .pipe($.sourcemaps.init())
       .pipe($.less())
