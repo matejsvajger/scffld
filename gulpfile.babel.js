@@ -7,8 +7,8 @@ import minimist from 'minimist';
 import browserSync from 'browser-sync';
 
 //- Import all gulp-* based plugins
-import gulpLoadPlugins from 'gulp-load-plugins';
-const plugins = gulpLoadPlugins();
+import LoadPlugins from 'gulp-load-plugins';
+const plugins = LoadPlugins();
 const bs = browserSync.create();
 
 //- Load config into variable
