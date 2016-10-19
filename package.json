@@ -51,6 +51,7 @@
     "gulp-postcss": "^6.2.0",
     "gulp-pug": "^3.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
@@ -68,10 +69,10 @@
     "watchify": "^3.7.0"
   },
   "config": {
-    "//": "Local Server Settings",
+    "cssPreprocessor": "less",
+    "//": "Entry files",
     "port": "3000",
     "baseUrl": "./",
-    "//": "Gulp Task Directories",
     "directories": {
       "source": "src",
       "build": "dist",
@@ -89,10 +90,9 @@
       },
       "data": "_seeds"
     },
-    "//": "Entry files",
     "entries": {
       "js": "main**.js",
-      "css": "main**.less"
+      "css": "main**"
     }
   },
   "dependencies": {
