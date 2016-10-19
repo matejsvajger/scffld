@@ -27,6 +27,10 @@ export default function(gulp, args, $, config, bs) {
       .pipe($.if((!args.serve && !args.dev), $.cleanCss()))
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest(dest))
-      .pipe(bs.stream({match: '**/*.css'}));
+      .pipe(bs.stream({match: '**/*.css'}))
+      .on('end', () => {
+        return gulp.src(path.join(dest, '**/*.css'))
+          .pipe($.if(args.debug, $.parker()));
+      });
   });
 }
