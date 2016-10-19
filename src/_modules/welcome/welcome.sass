@@ -1,0 +1,60 @@
+#welcome-section
+  width: 100%
+  background: #333
+  overflow: hidden
+  position: relative
+  background-size: cover
+  background-position: center center
+  background-image: url(../images/background.jpg)
+  background-position: center bottom
+  z-index: 1
+
+  h1, h2
+    position: absolute
+    text-align: center
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.9), 6px 6px 4px rgba(0,0,0,0.4)
+    -webkit-transform: translate3d(-50%,-50%,0)
+    transform: translate3d(-50%,-50%,0)
+    padding: 0
+    margin: 0
+    left: 50%
+
+  h1
+    color: #f9f1e9
+    font-size: 8em
+    top: 25%
+
+  h2
+    top: 15%
+    width: 0
+    font-size: 4em
+    color: #f9f1e9
+    overflow: hidden
+    white-space: nowrap
+    border-right: 3px solid
+    animation: type 1s 1s steps(11) forwards, blink .5s step-end infinite alternate
+
+  .fadeIn
+    animation: fadeIn 0.5s ease-out
+    animation-fill-mode: both
+
+  .wait-1s
+    animation-delay: 1s
+  .wait-2s
+    animation-delay: 2.2s
+
+  @keyframes fadeIn
+    from
+      opacity: 0
+      top: 26%
+    to
+      opacity: 1
+      top: 25%
+
+  @keyframes type
+    to
+      width: 11ch
+
+  @keyframes blink
+    50%
+      border-color: transparent

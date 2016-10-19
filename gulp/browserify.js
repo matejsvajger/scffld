@@ -37,10 +37,10 @@ export default function(gulp, args, $, config, bs) {
         bundler = watchify(browserify(opts));
       }
 
-      let rebundle = function() {
+      let rebundle = () => {
         let startTime = new Date().getTime();
         bundler.bundle()
-          .on('error', function(err) {
+          .on('error', (err) => {
             $.util.log(
               $.util.colors.red('Browserify compile error:'),
               '\n',
@@ -53,7 +53,7 @@ export default function(gulp, args, $, config, bs) {
           .pipe(buffer())
           .pipe($.sourcemaps.init({loadMaps: true}))
           .pipe($.if((!args.serve && !args.dev), $.uglify()))
-          .pipe($.rename(function(filepath) {
+          .pipe($.rename((filepath) => {
             // Remove 'source' directory as well as prefixed folder underscores
             // Ex: 'src/_scripts' --> '/scripts'
             filepath.dirname = typeof(dirs.scripts) == 'string' ?
@@ -63,7 +63,7 @@ export default function(gulp, args, $, config, bs) {
           .pipe($.sourcemaps.write('./'))
           .pipe(gulp.dest(dest))
           // Show which file was bundled and how long it took
-          .on('end', function() {
+          .on('end', () => {
             let time = (new Date().getTime() - startTime) / 1000;
             $.util.log(
               $.util.colors.cyan(entry)

@@ -7,8 +7,8 @@ import minimist from 'minimist';
 import browserSync from 'browser-sync';
 
 //- Import all gulp-* based plugins
-import gulpLoadPlugins from 'gulp-load-plugins';
-const plugins = gulpLoadPlugins();
+import LoadPlugins from 'gulp-load-plugins';
+const plugins = LoadPlugins();
 const bs = browserSync.create();
 
 //- Load config into variable
@@ -35,7 +35,7 @@ gulp.task('default', ['clean'], () => {
 });
 
 // Build production-ready code
-gulp.task('build', ['imagemin', 'copy', 'pug', 'less', 'browserify']);
+gulp.task('build', ['imagemin', 'copy', 'pug', 'styles', 'browserify']);
 
 // Build uncompressed code served via dev server
 gulp.task('serve', ['build', 'browserSync', 'watch']);
