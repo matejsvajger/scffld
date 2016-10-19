@@ -209,7 +209,7 @@ Compiles and minifies CSS for production.
 Compiles Pug templates into HTML.
 
 
-***Adding the `--debug` option to any gulp task displays extra debugging information (ex. data being loaded into your templates)***
+***Adding the `--debug` option to any gulp task displays extra debugging information (ex. data being loaded into your templates or css analysis using [Parker](https://github.com/katiefenn/parker))***
 
 ### Data Files
 
