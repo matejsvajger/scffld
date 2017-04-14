@@ -1,3 +1,10 @@
+### v1.2.8:
+#### date: 2017-04-15
+##### changes:
+* Installed pulpjs for scaffolding the project setup.
+* Moved config files into templates folder
+* Made it installable via npm and runnable from `node_modules`
+
 ### v1.1.0:
 #### date: 2016-10-19
 ##### changes:
