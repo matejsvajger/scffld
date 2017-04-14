@@ -20,11 +20,20 @@
 
 ## Quickstart
 
+### Preffered
+Create a clean project directory, navigate to it in terminal and run the following command:
+```
+npm init && npm i scffld --save-dev
+```
+
+### Alternative
 - Download this project from github or run the following command in your terminal:
 ```
 curl -L https://github.com/matejsvajger/scffld/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,LICENSE.md,CONDUCT.md,CONTRIBUTING.md,CHANGELOG.md}
 ```
-- Install dependencies: `npm install`
+and install dependencies: `npm install`.
+
+--
 - Run `gulp serve` to preview and watch for changes
 - Run `gulp build` to compile production version
 
@@ -137,7 +146,7 @@ Ex: `main**.js` will process all files that start with `main` and end with `.js`
 
 ```json
 "//": "CUSTOM CONFIGURATION",
-"config": {
+"scffld": {
   "//": "Local Server Settings",
   "cssPreprocessor": "less",
   "port": "3000",
@@ -255,11 +264,8 @@ review the [guidelines for contributing](CONTRIBUTING.md) and [code of conduct](
 ## Roadmap
 - Prepare examples
 - Add module generator
-- Write tests
 - Make a terminal help command
-- Implement webpack as an alternative option
-- Add React + JSX as an alternative to Pug
-- Bump ES6 to ES2016+ and rewrite gulp tasks to run them over npm scripts
+- Write tests
 
 ### Why ?
 Because I couldn't find a tailormade generator and I needed something that suits my current workflow and helps me jump start a project. This template is heavily inspired by yeoman webapp and yeougurt generators.
@@ -275,4 +281,4 @@ See [Changelog](CHANGELOG.md)
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information - &copy; Matej Svajger
 
-Scffld, because it's 2016 fuck vowels!
+Scffld, because it's 2017 fuck vowels!
