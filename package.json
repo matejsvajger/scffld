@@ -1,9 +1,10 @@
 {
   "name": "scffld",
-  "version": "1.0.0",
+  "version": "1.2.8",
   "description": "Front-end - web project template - Using LESS/PUG/ES2015",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "[ -f ../.bin/plop ] && node ../.bin/plop install || node ./node_modules/.bin/plop install"
   },
   "keywords": [
     "html",
@@ -20,15 +21,16 @@
     "url": "https://github.com/matejsvajger/scffld",
     "type": "git"
   },
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^6.5.0",
-    "babel-core": "^6.17.0",
-    "babel-eslint": "^7.0.0",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-latest": "^6.24.0",
     "babel-register": "^6.16.3",
     "babelify": "^7.3.0",
-    "browser-sync": "^2.17.2",
+    "browser-sync": "^2.18.2",
     "browserify": "^13.1.0",
     "del": "^2.2.2",
     "envify": "^3.4.1",
@@ -37,7 +39,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-changed": "^1.3.2",
-    "gulp-clean-css": "^2.0.13",
+    "gulp-clean-css": "^3.0.0",
     "gulp-debug": "^2.1.2",
     "gulp-eslint": "^3.0.1",
     "gulp-htmlmin": "^3.0.0",
@@ -63,39 +65,13 @@
     "js-yaml": "^3.6.1",
     "minimist": "^1.2.0",
     "ngrok": "^2.2.3",
-    "pug": "^2.0.0-beta6",
+    "plop": "^1.7.4",
+    "pug": "^2.0.0-beta11",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   },
-  "config": {
-    "cssPreprocessor": "less",
-    "//": "Entry files",
-    "port": "3000",
-    "baseUrl": "./",
-    "directories": {
-      "source": "src",
-      "build": "dist",
-      "//": "Directories relative to source directory",
-      "modules": "_modules",
-      "layouts": "_layouts",
-      "images": "_images",
-      "styles": {
-        "src": "_styles",
-        "dist": "css"
-      },
-      "scripts": {
-        "src": "_scripts",
-        "dist": "js"
-      },
-      "data": "_seeds"
-    },
-    "entries": {
-      "js": "main**.js",
-      "css": "main**"
-    }
-  },
-  "dependencies": {
+  "devDependencies": {
     "normalize.css": "^5.0.0"
   }
 }

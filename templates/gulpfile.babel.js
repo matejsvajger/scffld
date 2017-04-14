@@ -2,6 +2,7 @@
 
 import fs from 'fs';
 import gulp from 'gulp';
+import path from 'path';
 import pjson from './package.json';
 import minimist from 'minimist';
 import browserSync from 'browser-sync';
@@ -12,20 +13,31 @@ const plugins = LoadPlugins();
 const bs = browserSync.create();
 
 //- Load config into variable
-let config = Object.assign({}, pjson.config);
+let config = Object.assign({}, pjson.scffld);
 let argv = process.argv.slice(2);
 let args = minimist(argv);
     args.serve = (argv.shift() === 'serve');
 
 //- Load all gulp tasks
-let tasks = fs.readdirSync('./gulp');
+let taskPath = './node_modules/scffld/gulp';
+
+if (fs.existsSync(taskPath)) {
+  require('babel-register')({
+    only: /node_modules\/scffld/
+  });
+} else {
+  taskPath = './gulp';
+}
+
+let tasks = fs.readdirSync(taskPath);
 for (let file of tasks) {
   if ((/\.(js)$/i).test(file)) {
     let task = file.split('.').shift();
     plugins.util.log(
       'Requiring task module ' + plugins.util.colors.magenta(task)
     );
-    require(`./gulp/${file}`)(gulp, args, plugins, config, bs);
+    var plugin = require('./' + path.join(taskPath, file));
+        plugin(gulp, args, plugins, config, bs);
   }
 }
 
