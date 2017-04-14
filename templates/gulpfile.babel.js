@@ -19,12 +19,16 @@ let args = minimist(argv);
     args.serve = (argv.shift() === 'serve');
 
 //- Load all gulp tasks
-require('babel-register')({
-  only: 'node_modules/scffld'
-});
-
 let taskPath = './node_modules/scffld/gulp';
-  taskPath = (fs.existsSync(taskPath)) ? taskPath : './gulp';
+
+if (fs.existsSync(taskPath)) {
+  require('babel-register')({
+    only: /node_modules\/scffld/
+  });
+} else {
+  taskPath = './gulp';
+}
+
 let tasks = fs.readdirSync(taskPath);
 for (let file of tasks) {
   if ((/\.(js)$/i).test(file)) {
@@ -35,6 +39,7 @@ for (let file of tasks) {
     var plugin = require('./' + path.join(taskPath, file));
         plugin(gulp, args, plugins, config, bs);
   }
+}
 
 // Default task cleans build dir and rebuilds.
 gulp.task('default', ['clean'], () => {

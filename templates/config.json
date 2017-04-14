@@ -1,0 +1,51 @@
+{
+  "devDependencies": {
+    "gulp-babel": "^6.1.2",
+    "gulp-changed": "^1.3.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-debug": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-parker": "^0.1.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-pug": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7"
+  },
+  "scffld" :{
+    "cssPreprocessor": "{{cssPreprocessor}}",
+    "//": "Entry files",
+    "port": "3000",
+    "baseUrl": "./",
+    "directories": {
+      "source": "src",
+      "build": "{{buildDir}}",
+      "//": "Directories relative to source directory",
+      "modules": "_modules",
+      "layouts": "_layouts",
+      "images": "_images",
+      "styles": {
+        "src": "_styles",
+        "dist": "css"
+      },
+      "scripts": {
+        "src": "_scripts",
+        "dist": "js"
+      },
+      "data": "_seeds"
+    },
+    "entries": {
+      "js": "main**.js",
+      "css": "main**"
+    }
+  }
+}
