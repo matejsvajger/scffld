@@ -47,7 +47,7 @@ gulp.task('default', ['clean'], () => {
 });
 
 // Build production-ready code
-gulp.task('build', ['imagemin', 'copy', 'pug', 'styles', 'browserify']);
+gulp.task('build', ['imagemin', 'copy', 'pug', 'styles', 'browserify', 'fonts']);
 
 // Build uncompressed code served via dev server
 gulp.task('serve', ['build', 'browserSync', 'watch']);

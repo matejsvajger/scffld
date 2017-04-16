@@ -46,6 +46,10 @@
     "entries": {
       "js": "main**.js",
       "css": "main**"
-    }
+    },
+    "fonts": [
+        "node_modules/slick-carousel/slick/fonts/slick.*",
+        "node_modules/font-awesome/fonts/*"
+    ]
   }
 }
