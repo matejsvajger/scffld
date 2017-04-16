@@ -1,7 +1,15 @@
-### v1.2.8:
-#### date: 2017-04-15
+### v1.3.0:
+#### date: 2017-04-16
 ##### changes:
-* Installed pulpjs for scaffolding the project setup.
+* New gulp task that copies fonts from node_modules into build dir.
+##### bugfixes:
+* Fixed watch task, to monitor changes in scss/sass files.
+
+
+### v1.2.8:
+#### date: 2017-04-14
+##### changes:
+* Installed plopjs for scaffolding the project setup.
 * Moved config files into templates folder
 * Made it installable via npm and runnable from `node_modules`
 

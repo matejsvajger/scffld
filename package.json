@@ -1,6 +1,6 @@
 {
   "name": "scffld",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "description": "Front-end - web project template - Using LESS/PUG/ES2015",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
