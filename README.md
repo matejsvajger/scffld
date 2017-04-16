@@ -17,6 +17,7 @@
 * Map compiled CSS and JS with sourcemaps
 * Configurable build dirs for each resource via config
 * Awesome image optimization
+* __NEW__ Copy fonts defined in config from node_modules into build dir.
 
 ## Quickstart
 
