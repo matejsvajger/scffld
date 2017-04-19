@@ -54,9 +54,18 @@ module.exports = function (plop) {
             templateFile: __dirname + '/templates/gulpfile.babel.js'
         },
         function addConfigToPackageJson(answers) {
-            var fs    = require('fs');
-            var pjson = require('./' + path.join(dest, 'package.json'));
+            var fs = require('fs');
             var configFilePath = __dirname + '/templates/config.json';
+            var pjson;
+
+            try {
+                pjson = require('./' + path.join(dest, 'package.json'));
+            } catch (e) {
+                if (e.code !== 'MODULE_NOT_FOUND') {
+                    throw e;
+                }
+                pjson = {};
+            }
 
             if (fs.existsSync(configFilePath)) {
 

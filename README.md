@@ -24,7 +24,7 @@
 ### Preffered
 Create a clean project directory, navigate to it in terminal and run the following command:
 ```
-npm init && npm i scffld --save-dev
+npm i scffld
 ```
 
 ### Alternative

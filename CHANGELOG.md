@@ -1,3 +1,9 @@
+### v1.3.1:
+#### date: 2017-04-18
+##### bugfixes:
+* Added glyphicons fonts to default config for copy to production.
+* Removed requirement to have an existing package.json
+
 ### v1.3.0:
 #### date: 2017-04-16
 ##### changes:
