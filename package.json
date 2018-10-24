@@ -4,7 +4,9 @@
   "description": "Front-end - web project template - Using LESS/PUG/ES2015",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "[ -f ../.bin/plop ] && node ../.bin/plop install || node ./node_modules/.bin/plop install"
+    "postinstall": "[ -f ../.bin/plop ] && node ../.bin/plop install || node ./node_modules/.bin/plop install",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "html",
@@ -36,7 +38,7 @@
     "envify": "^3.4.1",
     "foldero": "^0.1.1",
     "glob": "^7.1.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-babel": "^6.1.2",
     "gulp-changed": "^1.3.2",
     "gulp-clean-css": "^3.0.0",
@@ -69,9 +71,11 @@
     "pug": "^2.0.0-beta11",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "snyk": "^1.104.2"
   },
   "devDependencies": {
     "normalize.css": "^5.0.0"
-  }
+  },
+  "snyk": true
 }
