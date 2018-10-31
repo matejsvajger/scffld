@@ -60,7 +60,7 @@
     "imagemin-gifsicle": "^5.1.0",
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-optipng": "^5.2.1",
-    "imagemin-pngquant": "^5.0.0",
+    "imagemin-pngquant": "^6.0.0",
     "imagemin-svgo": "^5.2.0",
     "js-yaml": "^3.6.1",
     "minimist": "^1.2.0",
