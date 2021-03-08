@@ -69,7 +69,7 @@
     "pug": "^2.0.0-beta11",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^4.0.0"
   },
   "devDependencies": {
     "normalize.css": "^5.0.0"
