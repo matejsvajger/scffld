@@ -22,7 +22,7 @@
     "type": "git"
   },
   "dependencies": {
-    "autoprefixer": "^6.5.0",
+    "autoprefixer": "^10.0.0",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -50,7 +50,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-parker": "^0.1.4",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^9.0.0",
     "gulp-pug": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
