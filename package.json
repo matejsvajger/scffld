@@ -46,7 +46,7 @@
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.0.3",
     "gulp-less": "^3.1.0",
-    "gulp-load-plugins": "^1.3.0",
+    "gulp-load-plugins": "^2.0.1",
     "gulp-notify": "^2.2.0",
     "gulp-parker": "^0.1.4",
     "gulp-plumber": "^1.1.0",
@@ -65,11 +65,11 @@
     "js-yaml": "^3.6.1",
     "minimist": "^1.2.0",
     "ngrok": "^2.2.3",
-    "plop": "^1.7.4",
+    "plop": "^3.0.0",
     "pug": "^2.0.0-beta11",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^4.0.0"
   },
   "devDependencies": {
     "normalize.css": "^5.0.0"
